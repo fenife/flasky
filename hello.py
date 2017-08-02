@@ -1,12 +1,14 @@
 """
 hello.py
 
-自定义错误页面
+使用Flask-Moment本地化日期和时间
 """
 
+from datetime import datetime
 from flask import Flask, render_template
 from flask_script import Manager
 from flask_bootstrap import Bootstrap
+from flask_moment import Moment
 
 # 初始化
 app = Flask(__name__)
@@ -16,6 +18,9 @@ manager = Manager(app)
 
 # 初始化Flask-Script
 bootstrap = Bootstrap(app)
+
+# 初始化Flask-Moment
+moment = Moment(app)
 
 # 错误处理
 @app.errorhandler(404)
@@ -30,7 +35,8 @@ def internal_server_error(e):
 @app.route('/')
 def index():
     """ 程序URL根地址'/'的响应函数 """
-    return render_template('index.html')
+    return render_template('index.html',
+            current_time=datetime.utcnow())
 
 # 支持URL的动态参数
 @app.route('/user/<name>')
