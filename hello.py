@@ -4,9 +4,13 @@ hello.py
 """
 
 from flask import Flask
+from flask_script import Manager
 
 # 初始化
 app = Flask(__name__)
+
+# 使用扩展模块Flask-Script支持命令行选项
+manager = Manager(app)
 
 # URL和视图函数的映射关系（路由）
 @app.route('/')
@@ -21,4 +25,4 @@ def user(name):
 
 # 启动服务器
 if __name__ == '__main__':
-    app.run(debug=True)
+    manager.run()
