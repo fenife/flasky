@@ -1,17 +1,21 @@
 """
 hello.py
-了解Flask框架程度的基本结构
-使用Jinja2渲染模板
+
+使用Flask-Bootstrap模板
 """
 
 from flask import Flask, render_template
 from flask_script import Manager
+from flask_bootstrap import Bootstrap
 
 # 初始化
 app = Flask(__name__)
 
 # 使用扩展模块Flask-Script支持命令行选项
 manager = Manager(app)
+
+# 初始化Flask-Script
+bootstrap = Bootstrap(app)
 
 # URL和视图函数的映射关系（路由）
 @app.route('/')
