@@ -1,7 +1,7 @@
 """
 hello.py
 
-使用Flask-Bootstrap模板
+自定义错误页面
 """
 
 from flask import Flask, render_template
@@ -17,6 +17,15 @@ manager = Manager(app)
 # 初始化Flask-Script
 bootstrap = Bootstrap(app)
 
+# 错误处理
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
+
 # URL和视图函数的映射关系（路由）
 @app.route('/')
 def index():
@@ -27,6 +36,7 @@ def index():
 @app.route('/user/<name>')
 def user(name):
     return render_template('user.html', name=name)
+
 
 # 启动服务器
 if __name__ == '__main__':
