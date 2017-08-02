@@ -1,9 +1,10 @@
 """
 hello.py
 了解Flask框架程度的基本结构
+使用Jinja2渲染模板
 """
 
-from flask import Flask
+from flask import Flask, render_template
 from flask_script import Manager
 
 # 初始化
@@ -16,12 +17,12 @@ manager = Manager(app)
 @app.route('/')
 def index():
     """ 程序URL根地址'/'的响应函数 """
-    return '<h1>Hello World!</h1>'
+    return render_template('index.html')
 
 # 支持URL的动态参数
 @app.route('/user/<name>')
 def user(name):
-    return '<h1>Hello %s!</h1> ' % name
+    return render_template('user.html', name=name)
 
 # 启动服务器
 if __name__ == '__main__':
