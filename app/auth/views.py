@@ -9,7 +9,6 @@ from .forms import LoginForm
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        # 使用表单中填写的email从数据库中加载用户
         user = User.query.filter_by(email=form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user, form.remember_me.data)

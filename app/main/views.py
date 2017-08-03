@@ -1,7 +1,3 @@
-"""
-保存程序的路由
-"""
-
 from flask import render_template
 from . import main
 
