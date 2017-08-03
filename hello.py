@@ -1,7 +1,7 @@
 """
 hello.py
 
-使用Flask-SQLAlchemy管理数据库
+创建迁移仓库
 """
 
 import os
@@ -13,6 +13,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import Required
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate, MigrateCommand
 
 basedir = os.path.abspath(os.path.dirname(__name__))
 
@@ -37,6 +38,7 @@ bootstrap = Bootstrap(app)
 moment = Moment(app)
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 
 # 定义Role和User的ORM模型
@@ -69,6 +71,7 @@ class NameForm(FlaskForm):
 def make_shell_context():
     return dict(app=app, db=db, User=User, Role=Role)
 manager.add_command("shell", Shell(make_context=make_shell_context))
+manager.add_command("db", MigrateCommand)
 
 
 # 错误处理
