@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 .DS_Store
-data.sqlite
+*.sqlite
 
 # C extensions
 *.so
