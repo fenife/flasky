@@ -1,4 +1,3 @@
-
 <p>Dear {{ user.username }},</p>
 <p>Welcome to <b>Flasky</b>!</p>
 <p>To confirm your account please <a href="{{ url_for('auth.confirm', token=token, _external=True) }}">click here</a>.</p>
