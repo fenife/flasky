@@ -20,8 +20,10 @@
         <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
         {% endif %}
         {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-        <p>最近登陆 {{ moment(user.member_since).format('L') }}.   最后查看： {{ moment(user.last_seen).fromNow() }}.</p>
-        <p>{{ user.posts.count() }} 个主题. {{ user.comments.count() }} 个评论.</p>
+        <p>最近登陆：{{ moment(user.member_since).format('L') }}.<br>
+            最后查看：{{ moment(user.last_seen).fromNow() }}.
+        </p>
+        <p>{{ user.posts.count() }} 个主题. <br>{{ user.comments.count() }} 个评论.</p>
         <p>
             {% if current_user.can(Permission.FOLLOW) and user != current_user %}
                 {% if not current_user.is_following(user) %}
@@ -30,8 +32,10 @@
                 <a href="{{ url_for('.unfollow', username=user.username) }}" class="btn btn-default">取消关注</a>
                 {% endif %}
             {% endif %}
-            <a href="{{ url_for('.followers', username=user.username) }}">关注我的人: <span class="badge">{{ user.followers.count() - 1 }}</span></a>
-            <a href="{{ url_for('.followed_by', username=user.username) }}">我关注的人: <span class="badge">{{ user.followed.count() - 1 }}</span></a>
+            <a href="{{ url_for('.followers', username=user.username) }}">
+                关注我的人: <span class="badge">{{ user.followers.count() - 1 }}</span></a>
+            <a href="{{ url_for('.followed_by', username=user.username) }}">
+                我关注的人: <span class="badge">{{ user.followed.count() - 1 }}</span></a>
             {% if current_user.is_authenticated and user != current_user and user.is_following(current_user) %}
             | <span class="label label-default">关注了你</span>
             {% endif %}
