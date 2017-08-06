@@ -10,20 +10,25 @@
         <h1>{{ user.username }}</h1>
         {% if user.name or user.location %}
         <p>
-            {% if user.name %}{{ user.name }}<br>{% endif %}
+            {% if user.name %} 真实姓名：{{ user.name }}<br>{% endif %}
             {% if user.location %}
-                From <a href="http://maps.google.com/?q={{ user.location }}">{{ user.location }}</a><br>
+                现在位置： <a href="http://maps.google.com/?q={{ user.location }}">{{ user.location }}</a><br>
             {% endif %}
         </p>
         {% endif %}
+
         {% if current_user.is_administrator() %}
         <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
         {% endif %}
-        {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+
+        {% if user.about_me %}<p>个人简介：{{ user.about_me }}</p>{% endif %}
+
         <p>最近登陆：{{ moment(user.member_since).format('L') }}.<br>
             最后查看：{{ moment(user.last_seen).fromNow() }}.
         </p>
+
         <p>{{ user.posts.count() }} 个主题. <br>{{ user.comments.count() }} 个评论.</p>
+
         <p>
             {% if current_user.can(Permission.FOLLOW) and user != current_user %}
                 {% if not current_user.is_following(user) %}
@@ -50,7 +55,7 @@
         </p>
     </div>
 </div>
-<h3>我的主题</h3>
+<h3>发表的主题</h3>
 {% include '_posts.html' %}
 {% if pagination %}
 <div class="pagination">
