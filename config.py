@@ -12,13 +12,13 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    FLASKY_MAIL_SUBJECT_PREFIX = '[Think]'
-    FLASKY_MAIL_SENDER = 'Think Admin <flasky@example.com>'
-    FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
-    FLASKY_POSTS_PER_PAGE = 10
-    FLASKY_FOLLOWERS_PER_PAGE = 50
-    FLASKY_COMMENTS_PER_PAGE = 30
-    FLASKY_SLOW_DB_QUERY_TIME=0.5
+    THINK_MAIL_SUBJECT_PREFIX = '[Think]'
+    THINK_MAIL_SENDER = 'Think Admin <think@example.com>'
+    THINK_ADMIN = os.environ.get('THINK_ADMIN')
+    THINK_POSTS_PER_PAGE = 10
+    THINK_FOLLOWERS_PER_PAGE = 50
+    THINK_COMMENTS_PER_PAGE = 30
+    THINK_SLOW_DB_QUERY_TIME=0.5
 
     @staticmethod
     def init_app(app):
@@ -57,9 +57,9 @@ class ProductionConfig(Config):
                 secure = ()
         mail_handler = SMTPHandler(
             mailhost=(cls.MAIL_SERVER, cls.MAIL_PORT),
-            fromaddr=cls.FLASKY_MAIL_SENDER,
-            toaddrs=[cls.FLASKY_ADMIN],
-            subject=cls.FLASKY_MAIL_SUBJECT_PREFIX + ' Application Error',
+            fromaddr=cls.THINK_MAIL_SENDER,
+            toaddrs=[cls.THINK_ADMIN],
+            subject=cls.THINK_MAIL_SUBJECT_PREFIX + ' Application Error',
             credentials=credentials,
             secure=secure)
         mail_handler.setLevel(logging.ERROR)
