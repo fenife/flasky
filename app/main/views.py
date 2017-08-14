@@ -34,6 +34,9 @@ def server_shutdown():
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
+    """
+    视图函数：程序根地址的处理程序
+    """
     form = PostForm()
     if current_user.can(Permission.WRITE_ARTICLES) and \
             form.validate_on_submit():
@@ -206,7 +209,7 @@ def followers(username):
 def followed_by(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
-        flash('用户错误')
+        flash('用户错误。')
         return redirect(url_for('.index'))
     page = request.args.get('page', 1, type=int)
     pagination = user.followed.paginate(
