@@ -21,11 +21,11 @@
 - selenium：模拟运行测试
 
 ## 结果示例
-[首页](https://github.com/zfrime/flasky/blob/master/doc/image/think_index.png)
-[用户页面](https://github.com/zfrime/flasky/blob/master/doc/image/think_user.png)
+![首页](https://github.com/zfrime/flasky/blob/master/doc/image/think_index.png)
+![用户页面](https://github.com/zfrime/flasky/blob/master/doc/image/think_user.png)
 
 ## 调用栈
-[调用栈](https://github.com/zfrime/flasky/blob/master/doc/image/call_stack.png)
+![调用栈](https://github.com/zfrime/flasky/blob/master/doc/image/call_stack.png)
 
 ## 说明
 本实例代码参考自[Flask Web Development](https://github.com/miguelgrinberg/flasky)
