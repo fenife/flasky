@@ -20,6 +20,13 @@
 - coverage：代码覆盖测试
 - selenium：模拟运行测试
 
+## 结果示例
+[首页](https://github.com/zfrime/flasky/blob/master/doc/image/think_index.png)
+[用户页面](https://github.com/zfrime/flasky/blob/master/doc/image/think_user.png)
+
+## 调用栈
+[调用栈](https://github.com/zfrime/flasky/blob/master/doc/image/call_stack.png)
+
 ## 说明
 本实例代码参考自[Flask Web Development](https://github.com/miguelgrinberg/flasky)
 和[Flask中文文档](http://docs.jinkan.org/docs/flask/index.html)
