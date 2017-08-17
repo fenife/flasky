@@ -1,4 +1,4 @@
-## flasky
+## Think
 基于Flask的Web开发实例：博客网站
 
 ## 实现功能
