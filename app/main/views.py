@@ -37,6 +37,11 @@ def index():
     """
     视图函数：程序根地址的处理程序
     """
+
+    # 输出调用栈
+    # from ..cheese import cheese
+    # cheese()
+
     form = PostForm()
     if current_user.can(Permission.WRITE_ARTICLES) and \
             form.validate_on_submit():
